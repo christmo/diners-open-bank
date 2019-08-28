@@ -105,6 +105,22 @@
                     </nonFilteredFileExtensions>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>1.2.0</version>
+                <configuration>
+                    <imageName>diners-oauth2</imageName>
+                    <dockerDirectory>.</dockerDirectory>
+                    <!--<resources>
+                        <resource>
+                            <directory>${project.build.directory}</directory>
+                            <include>${project.build.finalName}.jar</include>
+                        </resource>
+                    </resources>-->
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
