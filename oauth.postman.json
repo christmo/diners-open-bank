@@ -1,0 +1,160 @@
+{
+	"info": {
+		"_postman_id": "7d009c9c-c130-4b8c-8ccd-5091c06639e6",
+		"name": "oauth",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. Generate Token",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "secret",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "fooClientIdPassword",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json;charset=UTF-8",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json;charset=UTF-8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://localhost:8081/spring-security-oauth-server/oauth/token?grant_type=password&client_id=fooClientIdPassword&username=user1&password=pass",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"spring-security-oauth-server",
+						"oauth",
+						"token"
+					],
+					"query": [
+						{
+							"key": "grant_type",
+							"value": "password"
+						},
+						{
+							"key": "client_id",
+							"value": "fooClientIdPassword"
+						},
+						{
+							"key": "username",
+							"value": "user1"
+						},
+						{
+							"key": "password",
+							"value": "pass"
+						}
+					]
+				},
+				"description": "Consultar Token usuario user1/pass"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8082/spring-security-oauth-resource/foos",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJ1c2VyMSIsInNjb3BlIjpbImZvbyIsInJlYWQiLCJ3cml0ZSJdLCJvcmdhbml6YXRpb24iOiJ1c2VyMWJLckUiLCJleHAiOjE1NjY5NTE4NzQsImF1dGhvcml0aWVzIjpbIlJPTEVfVVNFUiJdLCJqdGkiOiIwOGJiZmFiMC04NjZlLTQ2NGUtOGUxMS03NzE4NzUyMjEyNWEiLCJjbGllbnRfaWQiOiJmb29DbGllbnRJZFBhc3N3b3JkIn0.2c9CMijoW3ilDFwJq1TRH5VZ4Fs2mK5l-VDfG3zhYSo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8082/spring-security-oauth-resource/foos/54",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"spring-security-oauth-resource",
+						"foos",
+						"54"
+					]
+				},
+				"description": "Guardar Foos"
+			},
+			"response": []
+		},
+		{
+			"name": "2. accounts",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJ1c2VyMSIsInNjb3BlIjpbImFwaSIsInJlYWQiLCJ3cml0ZSJdLCJvcmdhbml6YXRpb24iOiJ1c2VyMVhkdHkiLCJleHAiOjE1NjY5NzEwMDgsImF1dGhvcml0aWVzIjpbIlJPTEVfVVNFUiJdLCJqdGkiOiJhMjE5Mjc0YS1kOTViLTRiMTctYjJjMC00ODE5MGNmZDgyZWMiLCJjbGllbnRfaWQiOiJEaW5lcnNDbHViIn0.maJgR3WT6C7ZmJgWUkO-849q1zEqDi9b6Zp1b-wfuEw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8082/services/accounts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"services",
+						"accounts"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
